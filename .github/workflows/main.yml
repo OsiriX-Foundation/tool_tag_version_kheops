@@ -10,7 +10,6 @@ jobs:
     
     strategy:
       matrix:
-        repo: [KheopsAuthorization, KheopsNginx, KheopsUI, KheopsAuthorizationMetricbeat, PACSProxyAuthorization, KheopsFilebeatSidecar, KheopsDICOMwebProxy, KheopsZipper]
         include:
           - repo: KheopsAuthorization
             branch: master
