@@ -4,11 +4,11 @@ Use for tagging a new version of kheops
 ## Usage
 
 Tag this repo will tag : 
-- repo: KheopsAuthorization (master)
-- repo: KheopsNginx (main)
-- repo: KheopsUI (master)
-- repo: KheopsAuthorizationMetricbeat (main)
-- repo: PACSProxyAuthorization (master)
-- repo: KheopsFilebeatSidecar (main)
-- repo: KheopsDICOMwebProxy (master)
-- repo: KheopsZipper (master)
+- KheopsAuthorization (master)
+- KheopsNginx (main)
+- KheopsUI (master)
+- KheopsAuthorizationMetricbeat (main)
+- PACSProxyAuthorization (master)
+- KheopsFilebeatSidecar (main)
+- KheopsDICOMwebProxy (master)
+- KheopsZipper (master)
