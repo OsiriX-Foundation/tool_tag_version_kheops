@@ -10,18 +10,36 @@ jobs:
     
     strategy:
       matrix:
-        repo: [KheopsAuthorization, KheopsNginx]
+        #repo: [KheopsAuthorization, KheopsNginx, KheopsUI, KheopsAuthorizationMetricbeat, PACSProxyAuthorization, KheopsFilebeatSidecar, KheopsDICOMwebProxy, KheopsZipper]
+        repo: [KheopsAuthorization]
+        include:
+          - repo: KheopsAuthorization
+            branch: master
+#          - repo: KheopsNginx
+#            branch: master
+#          - repo: KheopsUI
+#            branch: master
+#          - repo: KheopsAuthorizationMetricbeat
+#            branch: master
+#          - repo: PACSProxyAuthorization
+#            branch: master
+#          - repo: KheopsFilebeatSidecar
+#            branch: master
+#          - repo: KheopsDICOMwebProxy
+#            branch: master
+#          - repo: KheopsZipper
+#            branch: master
     steps:
     
       - name: Extract tag name
         run: echo "tag=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
     
-      - name: get sha1 kheopsAuthorization
-        run: echo "sha_kheopsAuthorization=$(git ls-remote https://github.com/OsiriX-Foundation/${{ matrix.repo }}.git master | cut -c1-40)" >> $GITHUB_ENV
+      - name: get sha1
+        run: echo "sha1=$(git ls-remote https://github.com/OsiriX-Foundation/${{ matrix.repo }}.git ${{ matrix.branch }} | cut -c1-40)" >> $GITHUB_ENV
 
       - uses: pkgdeps/git-tag-action@v2.0.1
         with:
           version: ${{ env.tag }}
           github_token: ${{ secrets.OSIRIX_FOUNDATION_TOKEN }}
           github_repo: OsiriX-Foundation/${{ matrix.repo }}
-          git_commit_sha: ${{ env.sha_kheopsAuthorization }}
+          git_commit_sha: ${{ env.sha1 }}
