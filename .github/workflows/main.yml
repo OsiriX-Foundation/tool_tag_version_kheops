@@ -1,0 +1,23 @@
+name: tag
+
+on:
+  push:
+    tags: []
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Extract tag name
+        run: echo "tag=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
+    
+      - name: get sha1 kheopsAuthorization
+        run: echo "sha_kheopsAuthorization=$(git ls-remote https://github.com/OsiriX-Foundation/KheopsAuthorization.git master | cut -c1-40)" >> $GITHUB_ENV
+
+      - uses: pkgdeps/git-tag-action@v2.0.1
+        with:
+          version: ${{ env.tag }}
+          github_token: ${{ secrets.OSIRIX_FOUNDATION_TOKEN }}
+          github_repo: OsiriX-Foundation/KheopsAuthorization
+          git_commit_sha: ${{ env.sha_kheopsAuthorization }}
