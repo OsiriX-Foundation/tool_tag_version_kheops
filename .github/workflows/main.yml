@@ -13,18 +13,18 @@ jobs:
         include:
           - repo: KheopsAuthorization
             branch: master
-          - repo: KheopsNginx
-            branch: main
+          #- repo: KheopsNginx
+          #  branch: main
           - repo: KheopsUI
             branch: master
           - repo: KheopsAuthorizationMetricbeat
             branch: main
-          - repo: PACSProxyAuthorization
-            branch: master
-          - repo: KheopsFilebeatSidecar
-            branch: main
-          - repo: KheopsDICOMwebProxy
-            branch: master
+          #- repo: PACSProxyAuthorization
+          #  branch: master
+          #- repo: KheopsFilebeatSidecar
+          #  branch: main
+          #- repo: KheopsDICOMwebProxy
+          #  branch: master
           - repo: KheopsZipper
             branch: master
     steps:
@@ -33,7 +33,7 @@ jobs:
         run: echo "tag=$(echo ${GITHUB_REF#refs/tags/})" >> $GITHUB_ENV
     
       - name: get sha1
-        run: echo "sha1=$(git ls-remote https://github.com/OsiriX-Foundation/${{ matrix.repo }}.git ${{ matrix.branch }} | cut -c1-40)" >> $GITHUB_ENV
+        run: echo "sha1=$(git ls-remote https://github.com/OsiriX-Foundation/${{ matrix.repo }}.git refs/heads/${{ matrix.branch }} | cut -c1-40)" >> $GITHUB_ENV
 
       - uses: pkgdeps/git-tag-action@v2.0.1
         with:
