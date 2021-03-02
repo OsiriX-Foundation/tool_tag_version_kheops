@@ -13,18 +13,18 @@ jobs:
         include:
           - repo: KheopsAuthorization
             branch: master
-          #- repo: KheopsNginx
-          #  branch: main
+          - repo: KheopsNginx
+            branch: main
           - repo: KheopsUI
             branch: master
           - repo: KheopsAuthorizationMetricbeat
             branch: main
-          #- repo: PACSProxyAuthorization
-          #  branch: master
-          #- repo: KheopsFilebeatSidecar
-          #  branch: main
-          #- repo: KheopsDICOMwebProxy
-          #  branch: master
+          - repo: PACSProxyAuthorization
+            branch: master
+          - repo: KheopsFilebeatSidecar
+            branch: main
+          - repo: KheopsDICOMwebProxy
+            branch: master
           - repo: KheopsZipper
             branch: master
     steps:
